@@ -1,9 +1,9 @@
-interface ScriptStep {
+export interface ScriptStep {
   prompt: string;
   userResponseOptions: string[];
 }
 
-type SalesScript = ScriptStep[];
+export type SalesScript = ScriptStep[];
 
 const salesScripts: SalesScript[] = [
   // Script 1: Initial Greeting and Qualification
