@@ -1,20 +1,18 @@
 import { getHumeAccessToken } from "@/utils/getHumeAccessToken";
-import dynamic from "next/dynamic";
-
-const Chat = dynamic(() => import("@/components/Chat"), {
-  ssr: false,
-});
+import ChatController from "@/components/ChatController"; // Import the new ChatController
 
 export default async function Page() {
   const accessToken = await getHumeAccessToken();
 
-  if (!accessToken) {
-    throw new Error();
-  }
+  // No need to throw an error here, ChatController can handle null accessToken
+  // if (!accessToken) {
+  //   throw new Error("Failed to get access token.");
+  // }
 
   return (
     <div className={"grow flex flex-col"}>
-      <Chat accessToken={accessToken} />
+      {/* Render ChatController and pass the accessToken */}
+      <ChatController accessToken={accessToken} />
     </div>
   );
 }
